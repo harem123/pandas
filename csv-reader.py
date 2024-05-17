@@ -9,4 +9,6 @@ df_actividades['datetime'] = pd.to_datetime(df_actividades['Ejecucion'], errors=
 
 # Extract month and create a new column 'mes'
 df_actividades['mes'] = df_actividades['datetime'].dt.month
-print(df_actividades['mes'])
+counts = df_actividades.groupby(['mes', 'Contrato']).size().reset_index(name='count')
+
+print(counts)
